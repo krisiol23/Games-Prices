@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 
 
-game_url= input()
+game_url= input("Steam game link:")
 
 uClient = uReq(game_url)
 page_html = uClient.read()
