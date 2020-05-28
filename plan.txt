@@ -1,0 +1,5 @@
+- gui
+- linki do stron z których korzysta aplikacja
+- zapisywanie danych do txt / sql
+- porównywarka cen
+- webscrapper do pobierania danych ze stron(cena, tytul)
