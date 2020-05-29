@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as soup #biblioteka do pobierania danych ze strony
 from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połączenia ze stronką
 
 
-game_url= input("Steam game link:") #pobieramy link do gry od użytkownika i zapisujemy w zmiennej game_url
+game_url= input("Steam game link: ") #pobieramy link do gry od użytkownika i zapisujemy w zmiennej game_url
 
 uClient = uReq(game_url) #nawiązujemy połączenie ze stronką pod linkiem który znajduje się w zmiennej game_url
 page_html = uClient.read() #zapisujemy do zmiennej page_html kod html tej strony do której się połączyliśmy
@@ -24,3 +24,9 @@ for p in game_price:#to samo co poœyższa petla
 
 print(game_name) #wypisujemy nasz tytuł
 print(game_price) #wypisujemy cenkę tytułu
+
+ready = game_name + " " + game_price #robimy stringa z wynikami naszego wyszukiwania
+
+txt_file = open("data.txt" , "r+") #otwieramy plik data.txt z uprawnieniami read + write
+txt_file.write(ready) #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+txt_file.close() #zapisujemy plik
