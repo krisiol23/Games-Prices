@@ -2,6 +2,7 @@
 from bs4 import BeautifulSoup as soup #biblioteka do pobierania danych ze strony
 from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połączenia ze stronką
 
+table = []
 
 game_url= input("Steam game link: ") #pobieramy link do gry od użytkownika i zapisujemy w zmiennej game_url
 
@@ -14,16 +15,17 @@ page_soup = soup(page_html, "html.parser") #parsujemy kod html do zmiennej page_
 game_name = page_soup.findAll("div", {"class":"apphub_AppName"}) #zapisujemy do zmiennej game_name linijke html który zawiera div z klasą "apphub_AppName"
 game_price = page_soup.findAll("div", {"class":"game_purchase_price price"}) #to samo działanie co powyżej
 
+
 for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
      game_name = p.text
 
 for p in game_price:#to samo co poœyższa petla
     game_price = p.text
     game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
-
+    table.append(game_price)
 
 print(game_name) #wypisujemy nasz tytuł
-print(game_price) #wypisujemy cenkę tytułu
+print(table[0]) #wypisujemy cenkę tytułu
 
 ready = game_name + " " + game_price #robimy stringa z wynikami naszego wyszukiwania
 
