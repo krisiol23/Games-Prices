@@ -27,6 +27,6 @@ print(game_price) #wypisujemy cenkę tytułu
 
 ready = game_name + " " + game_price #robimy stringa z wynikami naszego wyszukiwania
 
-txt_file = open("data.txt" , "r+") #otwieramy plik data.txt z uprawnieniami read + write
-txt_file.write(ready) #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
+txt_file.write(ready+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
 txt_file.close() #zapisujemy plik
