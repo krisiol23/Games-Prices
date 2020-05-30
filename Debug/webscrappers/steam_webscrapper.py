@@ -27,7 +27,7 @@ for p in game_price:#to samo co poœyższa petla
 print(game_name) #wypisujemy nasz tytuł
 print(table[0]) #wypisujemy cenkę tytułu
 
-ready = game_name + " " + game_price #robimy stringa z wynikami naszego wyszukiwania
+ready = game_name + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 
 txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
 txt_file.write(ready+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
