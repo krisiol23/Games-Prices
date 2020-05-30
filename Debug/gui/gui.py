@@ -2,6 +2,8 @@
 import tkinter
 from tkinter import *
 from tkinter import ttk
+import os
+
 
 window = tkinter. Tk()
 window.title("Games_prices")
@@ -21,7 +23,11 @@ combobox.grid(row = 2, column = 0)
 button1 = Button(window, text="ACCEPT")
 button1.grid(row = 3, column = 0, pady = 10)
 
-with open("test.txt") as f:
+path = os.getcwd()
+parent = os.path.dirname(path) 
+new = os.chdir("../webscrappers") 
+
+with open("data.txt") as f:
 	label1 = Label(window, text = f.read())
 	label1.grid(row = 4, column = 1)
 
