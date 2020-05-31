@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
+import json
+import requests
 print ("dupa")
+
 
 
 game_url= input("wpisz nazwe gry: ")
