@@ -3,7 +3,6 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 import os
-#biblioteki
 from bs4 import BeautifulSoup as soup #biblioteka do pobierania danych ze strony
 from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połączenia ze stronką
 
@@ -15,13 +14,9 @@ def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
 	value = combobox.get()
-	print(value)
 	if(value == "Steam"):
-		print("cycki")
+
 		table = []
-
-		#game_url= input("Steam game link: ") #pobieramy link do gry od użytkownika i zapisujemy w zmiennej game_url
-
 		uClient = uReq(game_url) #nawiązujemy połączenie ze stronką pod linkiem który znajduje się w zmiennej game_url
 		page_html = uClient.read() #zapisujemy do zmiennej page_html kod html tej strony do której się połączyliśmy
 		uClient.close() #jak mamy juz kod html z którego korzystać będzie biblioteka bs4 to zamykamy połączenie ze stroną
@@ -34,26 +29,18 @@ def get_url():
 
 		for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
 			game_name = p.text
-     		
+
 
 		for p in game_price:#to samo co poœyższa petla
 			game_price = p.text
 			game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
 			table.append(game_price)
- 		   	
-  			
-   		 	
 
-		print(game_name) #wypisujemy nasz tytuł
-		print(table[0]) #wypisujemy cenkę tytułu
 
-		ready = game_name + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
+		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
+		saveToFile(ready)
+		getTitles()
 
-		txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
-		txt_file.write(ready+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
-		txt_file.close() #zapisujemy plik
-		cycki()
-		
 
 label = Label(window, text = "Game link")
 label.grid(row = 0, column = 0)
@@ -67,29 +54,28 @@ combobox = ttk.Combobox(window, values = ["Epic Games", "Steam", "Origin", "Upla
 combobox.grid(row = 2, column = 0)
 
 
-button1 = Button(window, text="ACCEPT")
-button1.grid(row = 3, column = 0, pady = 10)
+#button1 = Button(window, text="ACCEPT")
+#button1.grid(row = 3, column = 0, pady = 10)
 
-path = os.getcwd()
-parent = os.path.dirname(path) 
-new = os.chdir("../webscrappers") 
+#path = os.getcwd()
+#parent = os.path.dirname(path)
+#new = os.chdir("../webscrappers")
 
-def cycki():
+def saveToFile(toSave):
+			txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
+			txt_file.write(toSave+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+			txt_file.close() #zapisujemy plik
+
+def getTitles():
 	with open("data.txt") as f:
 		label1 = Label(window, text = f.read())
 		label1.grid(row = 4, column = 1)
-		
-
-		
-cycki()
 
 
+def checkPrices():
 
 
-
-
-
-
+getTitles()
 
 window.geometry("400x400")
 window.mainloop()
