@@ -18,6 +18,7 @@ def get_url():
 	if(value == "Steam"):
 		steamScrap(game_url, value)
 		saveLinkToFile(game_url)
+		
 	elif(value == "Epic Games"):
 		print("sss")
 
