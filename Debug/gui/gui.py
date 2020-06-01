@@ -11,9 +11,6 @@ window = tkinter. Tk()
 window.title("Games_prices")
 
 
-
-
->>>>>>> f33846bbdbc8bd84909f2236c76a97f423fd5d58
 def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
@@ -65,7 +62,7 @@ def get_url():
 		wrong_label = Label(window, text = "ERROR", fg = "red")
 		wrong_label.grid(row = 4, column = 0)
 
->>>>>>> f33846bbdbc8bd84909f2236c76a97f423fd5d58
+
 
 
 label = Label(window, text = "Game link")
