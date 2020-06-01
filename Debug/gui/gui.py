@@ -10,12 +10,13 @@ from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połącz
 window = tkinter. Tk()
 window.title("Games_prices")
 
-print("dupcia")
+
 def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
 	value = combobox.get()
 	if(value == "Steam"):
+		
 		table = []
 
 		#game_url= input("Steam game link: ") #pobieramy link do gry od użytkownika i zapisujemy w zmiennej game_url
@@ -59,7 +60,8 @@ def get_url():
 
 	else:
 		wrong_label = Label(window, text = "ERROR", fg = "red")
-		wrong_label.grid(row = 4, column = 0)			
+		wrong_label.grid(row = 4, column = 0)
+
 
 
 label = Label(window, text = "Game link")
@@ -95,7 +97,6 @@ def checkPrices():
 	print("ss")
 
 getTitles()
-
 
 window.geometry("400x400")
 window.mainloop()
