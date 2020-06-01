@@ -15,9 +15,7 @@ def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
 	value = combobox.get()
-	print(value)
 	if(value == "Steam"):
-		print("cycki")
 		table = []
 
 		#game_url= input("Steam game link: ") #pobieramy link do gry od użytkownika i zapisujemy w zmiennej game_url
@@ -41,19 +39,28 @@ def get_url():
 			game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
 			table.append(game_price)
  		   	
-  			
-   		 	
 
-		print(game_name) #wypisujemy nasz tytuł
-		print(table[0]) #wypisujemy cenkę tytułu
+		#print(game_name) #wypisujemy nasz tytuł
+		#print(table[0]) #wypisujemy cenkę tytułu
 
-		ready = game_name + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
-
-		txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
-		txt_file.write(ready+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
-		txt_file.close() #zapisujemy plik
-		cycki()
+		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
+		saveToFile(ready)
 		
+		getTitles()
+		
+	elif(value == "Epic Games"):
+		print("sss")
+
+	elif(value == "Origin"):
+		print("asdasd")
+
+	elif(value == "Uplay"):
+		print("wdasda")
+
+	else:
+		wrong_label = Label(window, text = "ERROR", fg = "red")
+		wrong_label.grid(row = 4, column = 0)			
+
 
 label = Label(window, text = "Game link")
 label.grid(row = 0, column = 0)
@@ -67,28 +74,27 @@ combobox = ttk.Combobox(window, values = ["Epic Games", "Steam", "Origin", "Upla
 combobox.grid(row = 2, column = 0)
 
 
-button1 = Button(window, text="ACCEPT")
+button1 = Button(window, text="REFRESH")
 button1.grid(row = 3, column = 0, pady = 10)
 
 path = os.getcwd()
 parent = os.path.dirname(path) 
 new = os.chdir("../webscrappers") 
 
-def cycki():
+def saveToFile(toSave):
+	txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
+	txt_file.write(toSave+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+	txt_file.close() #zapisujemy plik
+
+def getTitles():
 	with open("data.txt") as f:
 		label1 = Label(window, text = f.read())
-		label1.grid(row = 4, column = 1)
+		label1.grid(row = 4, column = 2)
 		
+def checkPrices():
+	print("ss")
 
-		
-cycki()
-
-
-
-
-
-
-
+getTitles()
 
 
 window.geometry("400x400")
