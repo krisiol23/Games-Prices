@@ -11,6 +11,9 @@ window = tkinter. Tk()
 window.title("Games_prices")
 
 
+
+
+>>>>>>> f33846bbdbc8bd84909f2236c76a97f423fd5d58
 def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
@@ -33,22 +36,22 @@ def get_url():
 
 		for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
 			game_name = p.text
-     		
+
 
 		for p in game_price:#to samo co poœyższa petla
 			game_price = p.text
 			game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
 			table.append(game_price)
- 		   	
+
 
 		#print(game_name) #wypisujemy nasz tytuł
 		#print(table[0]) #wypisujemy cenkę tytułu
 
 		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 		saveToFile(ready)
-		
+
 		getTitles()
-		
+
 	elif(value == "Epic Games"):
 		print("sss")
 
@@ -62,6 +65,7 @@ def get_url():
 		wrong_label = Label(window, text = "ERROR", fg = "red")
 		wrong_label.grid(row = 4, column = 0)
 
+>>>>>>> f33846bbdbc8bd84909f2236c76a97f423fd5d58
 
 
 label = Label(window, text = "Game link")
@@ -80,8 +84,8 @@ button1 = Button(window, text="REFRESH")
 button1.grid(row = 3, column = 0, pady = 10)
 
 path = os.getcwd()
-parent = os.path.dirname(path) 
-new = os.chdir("../webscrappers") 
+parent = os.path.dirname(path)
+new = os.chdir("../webscrappers")
 
 def saveToFile(toSave):
 	txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
@@ -92,7 +96,7 @@ def getTitles():
 	with open("data.txt") as f:
 		label1 = Label(window, text = f.read())
 		label1.grid(row = 4, column = 2)
-		
+
 def checkPrices():
 	print("ss")
 
