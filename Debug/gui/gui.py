@@ -10,7 +10,7 @@ from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połącz
 window = tkinter. Tk()
 window.title("Games_prices")
 
-
+print("dupcia")
 def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
