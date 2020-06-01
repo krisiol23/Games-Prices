@@ -19,12 +19,8 @@ def get_url():
 	value = combobox.get()
 	if(value == "Steam"):
 		steamScrap(game_url, value)
-<<<<<<< HEAD
-
-=======
 		saveLinkToFile(game_url)
 		
->>>>>>> d8aa573c5be83bf5bfb593ec4e3df164a2ee19b7
 	elif(value == "Epic Games"):
 		print("sss")
 
