@@ -17,7 +17,7 @@ def get_url():
 
 	if(value == "Steam"):
 		steamScrap(game_url, value)
-
+		saveLinkToFile(game_url)
 	elif(value == "Epic Games"):
 		print("sss")
 
@@ -47,9 +47,9 @@ combobox.grid(row = 2, column = 0)
 button1 = Button(window, text="REFRESH")
 button1.grid(row = 3, column = 0, pady = 10)
 
-path = os.getcwd()
-parent = os.path.dirname(path)
-new = os.chdir("../webscrappers")
+#path = os.getcwd()
+#parent = os.path.dirname(path)
+#new = os.chdir("../webscrappers")
 
 def saveToFile(toSave):
 	txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
@@ -85,8 +85,12 @@ def steamScrap(game_url, value):
 
 	ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 	saveToFile(ready)
-
 	getTitles()
+
+def saveLinkToFile(game_link):
+	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
+	link_file.write(game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+	link_file.close() #zapisujemy plik
 
 def checkPrices():
 	print("ss")
