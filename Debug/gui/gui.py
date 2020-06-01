@@ -10,25 +10,26 @@ from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połącz
 window = tkinter. Tk()
 window.title("Games_prices")
 
-def saveToFile():
-	
-
 def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
 	value = combobox.get()
+
 	if(value == "Steam"):
 		steamScrap(game_url, value)
 		saveLinkToFile(game_url)
 		
 	elif(value == "Epic Games"):
 		print("sss")
+		saveLinkToFile(game_url)
 
 	elif(value == "Origin"):
 		print("asdasd")
+		saveLinkToFile(game_url)
 
 	elif(value == "Uplay"):
 		print("wdasda")
+		saveLinkToFile(game_url)
 
 	else:
 		wrong_label = Label(window, text = "ERROR", fg = "red")
@@ -50,9 +51,9 @@ combobox.grid(row = 2, column = 0)
 button1 = Button(window, text="REFRESH")
 button1.grid(row = 3, column = 0, pady = 10)
 
-path = os.getcwd()
-parent = os.path.dirname(path)
-new = os.chdir("../webscrappers")
+#path = os.getcwd()
+#parent = os.path.dirname(path)
+#new = os.chdir("../webscrappers")
 
 def saveToFile(toSave):
 	txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
@@ -69,7 +70,7 @@ def steamScrap(game_url, value):
 
 	uClient = uReq(game_url) #nawiązujemy połączenie ze stronką pod linkiem który znajduje się w zmiennej game_url
 	page_html = uClient.read() #zapisujemy do zmiennej page_html kod html tej strony do której się połączyliśmy
-	uClient.close() #jak mamy juz kod html z którego korzystać będzie biblioteka bs4 to zamykamy połączenie ze stroną
+	uClient.close() #jak mamy juz kod html z którego korzystać będzie biblioteka bs4 to zamykamy połączenie ze stroną
 
 	page_soup = soup(page_html, "html.parser") #parsujemy kod html do zmiennej page_soup
 
@@ -88,13 +89,18 @@ def steamScrap(game_url, value):
 
 	ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 	saveToFile(ready)
-
 	getTitles()
 
+def saveLinkToFile(game_link):
+	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
+	link_file.write(game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+	link_file.close() #zapisujemy plik
+
 def checkPrices():
-	print("asad")
+	print("ss")
 
 getTitles()
+
 
 window.geometry("400x400")
 window.mainloop()
