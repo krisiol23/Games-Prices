@@ -10,6 +10,10 @@ from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połącz
 window = tkinter. Tk()
 window.title("Games_prices")
 
+def clear():
+	open("data.txt", "w").close()
+	open("links.txt", "w").close()
+
 def get_url():
 	game_url = textbox.get()
 	textbox.delete(0, END)
@@ -48,7 +52,7 @@ combobox = ttk.Combobox(window, values = ["Epic Games", "Steam", "Origin", "Upla
 combobox.grid(row = 2, column = 0)
 
 
-button1 = Button(window, text="REFRESH")
+button1 = Button(window, text="REFRESH", command = clear)
 button1.grid(row = 3, column = 0, pady = 10)
 
 #path = os.getcwd()
