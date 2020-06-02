@@ -22,7 +22,7 @@ def get_url():
 	if(value == "Steam"):
 		steamScrap(game_url, value)
 		saveLinkToFile(game_url)
-		
+
 	elif(value == "Epic Games"):
 		print("sss")
 		saveLinkToFile(game_url)
@@ -61,7 +61,7 @@ button1.grid(row = 3, column = 0, pady = 10)
 
 def saveToFile(toSave):
 	txt_file = open("data.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
-	txt_file.write(toSave+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+	txt_file.write(" " +toSave+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
 	txt_file.close() #zapisujemy plik
 
 def getTitles():
@@ -94,14 +94,28 @@ def steamScrap(game_url, value):
 	ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 	saveToFile(ready)
 	getTitles()
+	checkPrices()
 
 def saveLinkToFile(game_link):
 	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
-	link_file.write(game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
+	link_file.write(" " + game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
 	link_file.close() #zapisujemy plik
 
 def checkPrices():
-	print("ss")
+	prices = []
+	links = []
+	with open("data.txt") as f:
+		price = f.read()
+		prices += price.split(" ")
+		del prices[0]
+	with open("links.txt") as f:
+		link = f.read()
+		links += link.split(" ")
+		del links[0]
+	print(prices)
+	print(links)
+
+checkPrices()
 
 getTitles()
 
