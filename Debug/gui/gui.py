@@ -24,12 +24,12 @@ def get_url():
 		saveLinkToFile(game_url)
 
 	elif(value == "Epic Games"):
-		print("sss")
-		saveLinkToFile(game_url)
+		wrong_label = Label(window, text = "Coming soon!", fg = "black")
+		wrong_label.grid(row = 4, column = 0)
 
 	elif(value == "Origin"):
-		print("asdasd")
-		saveLinkToFile(game_url)
+		wrong_label = Label(window, text = "Coming soon!", fg = "black")
+		wrong_label.grid(row = 4, column = 0)
 
 	elif(value == "Uplay"):
 		print("wdasda")
