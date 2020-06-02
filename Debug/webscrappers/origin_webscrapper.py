@@ -25,14 +25,20 @@ g4me_name = game_name[1].capitalize()
 print(g4me_name)
 
 game_price = game_url + "interstitial"
-
 uClient = uReq(game_price)
 page_html = uClient.read()
 uClient.close()
 page_soup = soup(page_html, "html.parser")
 
 
-game_price = page_soup.findAll("div", {"class":"otkex-priceblock-pricewrapper"})
+
+#game_price = page_soup.findAll("div", {"id":"content"})
+game_price = page_soup.findAll("span", {"class":"origin-white-space-nowrap"})
+print(game_price)
+for p in game_price:
+    game_price = p.text
+    game_price = game_price.strip() 
+
 print(game_price)
 
 
