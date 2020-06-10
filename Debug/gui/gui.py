@@ -94,14 +94,16 @@ def steamScrap(game_url, value):
 	ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 	saveToFile(ready)
 	getTitles()
-	checkPrices()
 
 def saveLinkToFile(game_link):
 	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
 	link_file.write(" " + game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
 	link_file.close() #zapisujemy plik
 
-def checkPrices():
+def getActualPirce(): #tutaj będzie nowe ceny brał
+
+
+def checkPrices(actual_price):
 	prices = []
 	links = []
 	with open("data.txt") as f:
@@ -115,7 +117,9 @@ def checkPrices():
 	print(prices)
 	print(links)
 
-checkPrices()
+
+
+#checkPrices()
 
 getTitles()
 

@@ -1,6 +1,0 @@
-- rozplanowanie sturktury aplikacji
-- podzial obowiazkow 
-- w miedzyczasie naklepanie krystiana 
-- ogarniecie zrodel skad bd to brac 
-- ogarniecie bibliotek 
--zrobienie kolejnego to do vo bd robic w aplikacji 

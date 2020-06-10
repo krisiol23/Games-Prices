@@ -1,5 +1,0 @@
-- gui - Krystiano
-- linki do stron z których korzysta aplikacja - Pioter
-- zapisywanie danych do txt / sql - Maciek
-- porównywarka cen - Maciek
-- webscrapper do pobierania danych ze stron(cena, tytul) - Pioter
