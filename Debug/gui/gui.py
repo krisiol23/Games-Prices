@@ -10,6 +10,8 @@ from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połącz
 window = tkinter. Tk()
 window.title("Games_prices")
 
+actual_prices = []
+
 def clear():
 	open("data.txt", "w").close()
 	open("links.txt", "w").close()
@@ -81,7 +83,6 @@ def steamScrap(game_url, value):
 	game_name = page_soup.findAll("div", {"class":"apphub_AppName"}) #zapisujemy do zmiennej game_name linijke html który zawiera div z klasą "apphub_AppName"
 	game_price = page_soup.findAll("div", {"class":"game_purchase_price price"}) #to samo działanie co powyżej
 
-
 	for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
 		game_name = p.text
 
@@ -95,15 +96,28 @@ def steamScrap(game_url, value):
 	saveToFile(ready)
 	getTitles()
 
+def steamCheck(url):
+
+	uClient = uReq(url)
+	page_html = uClient.read()
+	uClient.close()
+
+	page_soup = soup(page_html, "html.parser")
+	game_price = page_soup.findAll("div", {"class":"game_purchase_price price"})
+
+	for p in game_price:
+		game_price = p.text
+		game_price = game_price.strip()
+		actual_prices.append(game_price)
+
+
 def saveLinkToFile(game_link):
 	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
 	link_file.write(" " + game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
 	link_file.close() #zapisujemy plik
 
-def getActualPirce(): #tutaj będzie nowe ceny brał
 
-
-def checkPrices(actual_price):
+def checkPrices():
 	prices = []
 	links = []
 	with open("data.txt") as f:
@@ -116,10 +130,11 @@ def checkPrices(actual_price):
 		del links[0]
 	print(prices)
 	print(links)
+	prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
+	for i in range(len(prices)):
+		steamCheck(links[i])
 
-
-
-#checkPrices()
+checkPrices()
 
 getTitles()
 
