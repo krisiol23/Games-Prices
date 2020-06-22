@@ -6,6 +6,7 @@ import os
 #biblioteki
 from bs4 import BeautifulSoup as soup #biblioteka do pobierania danych ze strony
 from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połączenia ze stronką
+import time
 
 window = tkinter. Tk()
 window.title("Games_prices")
@@ -97,7 +98,7 @@ def steamScrap(game_url, value):
 	getTitles()
 
 def steamCheck(url):
-
+	table = []
 	uClient = uReq(url)
 	page_html = uClient.read()
 	uClient.close()
@@ -108,7 +109,12 @@ def steamCheck(url):
 	for p in game_price:
 		game_price = p.text
 		game_price = game_price.strip()
-		actual_prices.append(game_price)
+		table.append(game_price)
+	print(table)
+	game_price = table[0]
+	print(game_price)
+	actual_prices.append(game_price)
+
 
 
 def saveLinkToFile(game_link):
@@ -133,6 +139,32 @@ def checkPrices():
 	prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
 	for i in range(len(prices)):
 		steamCheck(links[i])
+	
+	print(actual_prices)
+	string = ""
+	for m in prices:
+		string += m
+	string1 = ""
+	# for n in actual_prices:
+	# 	string+= n
+	
+	prices = string.replace(",", ".")
+	prices = prices.replace("zł", " ")
+	print(prices)
+	actual_prices = string1.replace("zł", " ")
+	print(actual_prices)
+
+	prices = prices.split(" ")
+	print(prices)
+	prices = [float(j) for j in prices]
+	#actual_prices = [int(j) for j in actual_prices]
+	for i in range(len(prices)):
+		if(prices[i] < actual_prices[i]):
+			print("cena jest niższa")
+		elif(prices[i] == actual_prices[i]):
+			print("vignered ciphered cycki dupa")
+		else: 
+			print("cena jest wyższa")	
 
 checkPrices()
 
