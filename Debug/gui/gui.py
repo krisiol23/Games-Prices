@@ -12,6 +12,7 @@ window = tkinter. Tk()
 window.title("Games_prices")
 
 actual_prices = []
+file_prices = []
 
 def clear():
 	open("data.txt", "w").close()
@@ -110,12 +111,10 @@ def steamCheck(url):
 		game_price = p.text
 		game_price = game_price.strip()
 		table.append(game_price)
-	print(table)
+	# print(table)
 	game_price = table[0]
-	print(game_price)
+	# print(game_price)
 	actual_prices.append(game_price)
-
-
 
 def saveLinkToFile(game_link):
 	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
@@ -124,6 +123,11 @@ def saveLinkToFile(game_link):
 
 
 def checkPrices():
+	global actual_prices
+	global file_prices
+	testb = []
+	testa = []
+
 	prices = []
 	links = []
 	with open("data.txt") as f:
@@ -136,35 +140,34 @@ def checkPrices():
 		del links[0]
 	print(prices)
 	print(links)
+	
+	for x in prices:
+		if(len(x) >= 6):
+			if(x[-6] == ","):
+				file_prices.append(x)
+
 	prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
-	for i in range(len(prices)):
+	for i in range(len(file_prices)):
 		steamCheck(links[i])
 	
-	print(actual_prices)
-	string = ""
-	for m in prices:
-		string += m
-	string1 = ""
-	# for n in actual_prices:
-	# 	string+= n
-	
-	prices = string.replace(",", ".")
-	prices = prices.replace("zł", " ")
-	print(prices)
-	actual_prices = string1.replace("zł", " ")
-	print(actual_prices)
+	for x in actual_prices:
+		x = x[:-2]
+		x = x.replace(",", ".")
+		testa.append(x)
 
-	prices = prices.split(" ")
-	print(prices)
-	prices = [float(j) for j in prices]
-	#actual_prices = [int(j) for j in actual_prices]
-	for i in range(len(prices)):
-		if(prices[i] < actual_prices[i]):
-			print("cena jest niższa")
-		elif(prices[i] == actual_prices[i]):
-			print("vignered ciphered cycki dupa")
-		else: 
-			print("cena jest wyższa")	
+	for x in file_prices:
+		x = x[:-3]
+		x = x.replace(",", ".")
+		testb.append(x)
+
+	for i in range(len(file_prices)):
+		if(float(testa[i]) < float(testb[i])):
+			print("Cena nizsza")
+		elif(float(testa[i]) == float(testb[i])):
+			print("Cena taka sama")	
+
+		else:
+			print("Cena wzrorsła")
 
 checkPrices()
 
