@@ -162,12 +162,12 @@ def checkPrices():
 
 	for i in range(len(file_prices)):
 		if(float(testa[i]) < float(testb[i])):
-			print("Cena wzrosła")
+			print("Price increased")
 		elif(float(testa[i]) == float(testb[i])):
-			print("Cena taka sama")	
+			print("Price is same")	
 
 		else:
-			print("Cena niższa")
+			print("Price decreased")
 
 checkPrices()
 
