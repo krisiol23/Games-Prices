@@ -38,7 +38,7 @@ def get_url():
 		window.after(2000, wrong_label.destroy)
 
 	elif(value == "Uplay"):
-		print("wdasda")
+		uplayScrap(game_url, value)
 		saveLinkToFile(game_url)
 
 	else:
@@ -100,6 +100,48 @@ def steamScrap(game_url, value):
 	ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 	saveToFile(ready)
 	getTitles()
+
+def uplayScrap(game_url, value):
+	table = []
+
+
+	uClient = uReq(game_url) 
+	page_html = uClient.read() 
+	uClient.close()
+
+	page_soup = soup(page_html, "html.parser") 
+	game_name = page_soup.findAll("div", {"class":"product-title-wrapper"}) 
+	game_price = page_soup.findAll("span", {"class":"price-sales standard-price"})
+
+
+	for p in game_name: 
+		game_name = p.text
+		game_name = game_name.strip()
+
+	for p in game_price:
+		game_price = p.text
+		game_price = game_price.strip() 
+		table.append(game_price)
+
+	game_price = game_price.split()
+	game_currency = game_price[0]
+	game_value = game_price[1]
+
+	x = game_value, game_currency
+
+	string = ""
+	for j in x:
+		string += j
+
+	x = string 
+	#print(x)
+	print(game_name) 
+	print(game_value,game_currency)
+
+	ready = game_name + " " + value + " " + x 
+
+	saveToFile(ready)
+	getTitles() 
 
 def steamCheck(url):
 	table = []
