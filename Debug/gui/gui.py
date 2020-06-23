@@ -111,9 +111,9 @@ def steamCheck(url):
 		game_price = p.text
 		game_price = game_price.strip()
 		table.append(game_price)
-	# print(table)
+	#print(table)
 	game_price = table[0]
-	# print(game_price)
+	#print(game_price)
 	actual_prices.append(game_price)
 
 def saveLinkToFile(game_link):
@@ -138,15 +138,15 @@ def checkPrices():
 		link = f.read()
 		links += link.split(" ")
 		del links[0]
-	print(prices)
-	print(links)
+	#print(prices)
+	#print(links)
 	
 	for x in prices:
 		if(len(x) >= 6):
 			if(x[-6] == ","):
 				file_prices.append(x)
 
-	prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
+	#prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
 	for i in range(len(file_prices)):
 		steamCheck(links[i])
 	
@@ -162,12 +162,12 @@ def checkPrices():
 
 	for i in range(len(file_prices)):
 		if(float(testa[i]) < float(testb[i])):
-			print("Cena nizsza")
+			print("Cena wzrosła")
 		elif(float(testa[i]) == float(testb[i])):
 			print("Cena taka sama")	
 
 		else:
-			print("Cena wzrorsła")
+			print("Cena niższa")
 
 checkPrices()
 
