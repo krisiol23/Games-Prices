@@ -30,10 +30,12 @@ def get_url():
 	elif(value == "Epic Games"):
 		wrong_label = Label(window, text = "Coming soon!", fg = "black")
 		wrong_label.grid(row = 4, column = 0)
+		window.after(2000, wrong_label.destroy)
 
 	elif(value == "Origin"):
 		wrong_label = Label(window, text = "Coming soon!", fg = "black")
 		wrong_label.grid(row = 4, column = 0)
+		window.after(2000, wrong_label.destroy)
 
 	elif(value == "Uplay"):
 		print("wdasda")
@@ -42,6 +44,7 @@ def get_url():
 	else:
 		wrong_label = Label(window, text = "ERROR", fg = "red")
 		wrong_label.grid(row = 4, column = 0)
+		window.after(2000, wrong_label.destroy)
 
 
 label = Label(window, text = "Game link")
@@ -56,7 +59,7 @@ combobox = ttk.Combobox(window, values = ["Epic Games", "Steam", "Origin", "Upla
 combobox.grid(row = 2, column = 0)
 
 
-button1 = Button(window, text="REFRESH", command = clear)
+button1 = Button(window, text="CLEAR", command = clear)
 button1.grid(row = 3, column = 0, pady = 10)
 
 #path = os.getcwd()
