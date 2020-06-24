@@ -17,3 +17,9 @@ if(x == "ubi"):
 
 print(x)
 print(y)
+
+tab = ["cycki", "kot", "pies"]
+
+for i in tab:
+	if(i == "cycki"):
+		print("działą")

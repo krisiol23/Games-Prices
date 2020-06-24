@@ -191,9 +191,28 @@ def checkPrices():
 			if(x[-6] == ","):
 				file_prices.append(x)
 
+	test = []
+	#print(links)
+	for n in links:
+		print(n)
+		n = n.replace("/", " ")
+		n = n.replace(".", " ")
+		n =  n.split(" ")
+		n = n[3]
+		test.append(n)
+	print(test)
+	
+	for m in test:
+		for i in range(len(file_prices)):
+			if(m == "steampowered"):
+				steamCheck()	
+			if(m == "ubi"):
+				print("dsa")
+
 	#prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
-	for i in range(len(file_prices)):
-		steamCheck(links[i])
+	# for i in range(len(file_prices)):
+	# 	print(i)
+	# 	steamCheck(links[i])
 	
 	for x in actual_prices:
 		x = x[:-2]
