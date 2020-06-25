@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup as soup #biblioteka do pobierania danych ze strony
 from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połączenia ze stronką
 import time
 
-window = tkinter. Tk()
+window = tkinter.Tk()
 window.title("Games_prices")
 
 actual_prices = []
@@ -161,6 +161,23 @@ def steamCheck(url):
 	#print(game_price)
 	actual_prices.append(game_price)
 
+def uplayCheck(url):
+	table = []
+	uClient = uReq(url)
+	page_html = uClient.read()
+	uClient.close()
+
+	page_soup = soup(page_html, "html.parser")
+	game_price = page_soup.findAll("span", {"class":"price-sales standard-price"})
+
+	for p in game_price:
+		game_price = p.text
+		game_price = game_price.strip()
+		table.append(game_price)	
+
+	game_price = table[0]
+	actual_prices.append(game_price)
+		
 def saveLinkToFile(game_link):
 	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
 	link_file.write(" " + game_link+"\n") #zapisujemy w naszym txt stringa którego utworzylismy powyżej
@@ -200,14 +217,38 @@ def checkPrices():
 		n =  n.split(" ")
 		n = n[3]
 		test.append(n)
-	print(test)
+	print(test)			
+
+	steamLink = []
+	uplayLink = []
 	
-	for m in test:
-		for i in range(len(file_prices)):
-			if(m == "steampowered"):
-				steamCheck()	
-			if(m == "ubi"):
-				print("dsa")
+	
+	for i in test:
+		if(i == "steampowered"):
+			for j in range(len(test)):	
+				steamLink.append(links[j])
+				break
+		if(i == "ubi"):
+			for n in range(len(test)):	
+				uplayLink.append(links[n])
+				break
+
+				
+		# if(m == "ubi"):
+		# 	uplayLink.append(links[i])
+		# 	break
+			
+	print(steamLink)
+	print(uplayLink)
+
+	# for m in test:
+	# 	#for i in range(len(file_prices)):
+	# 	if(m == "steampowered"):
+	# 		for j in steamLink:
+	# 			steamCheck(j)	
+	# 	if(m == "ubi"):
+	# 		for y in uplayLink:
+	# 			uplayCheck(y)
 
 	#prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
 	# for i in range(len(file_prices)):
