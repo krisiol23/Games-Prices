@@ -47,6 +47,7 @@ def get_url():
 		window.after(2000, wrong_label.destroy)
 
 
+	
 label = Label(window, text = "Game link")
 label.grid(row = 0, column = 0)
 
@@ -91,19 +92,30 @@ def steamScrap(game_url, value):
 	for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
 		game_name = p.text
 
+	if not game_price:
+		game_price1 = page_soup.findAll("div", {"class":"discount_final_price"})
+		for p in game_price1:
+			game_price1 = p.text
+			game_price1 = game_price1.strip()
+			table.append(game_price1)
 
-	for p in game_price:#to samo co poœyższa petla
-		game_price = p.text
-		game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
-		table.append(game_price)
+		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
+		saveToFile(ready)
+		getTitles()
+	
+	else:
+		for p in game_price:#to samo co poœyższa petla
+			game_price = p.text
+			game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
+			table.append(game_price)
 
-	ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
-	saveToFile(ready)
-	getTitles()
+
+		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
+		saveToFile(ready)
+		getTitles()
 
 def uplayScrap(game_url, value):
 	table = []
-
 
 	uClient = uReq(game_url)
 	page_html = uClient.read()
@@ -112,7 +124,6 @@ def uplayScrap(game_url, value):
 	page_soup = soup(page_html, "html.parser")
 	game_name = page_soup.findAll("div", {"class":"product-title-wrapper"})
 	game_price = page_soup.findAll("span", {"class":"price-sales standard-price"})
-
 
 	for p in game_name:
 		game_name = p.text
@@ -151,15 +162,28 @@ def steamCheck(url):
 
 	page_soup = soup(page_html, "html.parser")
 	game_price = page_soup.findAll("div", {"class":"game_purchase_price price"})
+	
+	if not game_price:
+		game_price1 = page_soup.findAll("div", {"class":"discount_final_price"})
+		print(game_price1)
+		for p in game_price1:
+			game_price1 = p.text
+			game_price1 = game_price1.strip()
+			table.append(game_price1)
+		#print(table)
+		game_price1 = table[0]
+		#print(game_price)
+		actual_prices.append(game_price1)
 
-	for p in game_price:
-		game_price = p.text
-		game_price = game_price.strip()
-		table.append(game_price)
-	#print(table)
-	game_price = table[0]
-	#print(game_price)
-	actual_prices.append(game_price)
+	else:
+		for p in game_price:
+			game_price = p.text
+			game_price = game_price.strip()
+			table.append(game_price)
+		#print(table)
+		game_price = table[0]
+		#print(game_price)
+		actual_prices.append(game_price)	
 
 def uplayCheck(url):
 	table = []
@@ -169,14 +193,26 @@ def uplayCheck(url):
 
 	page_soup = soup(page_html, "html.parser")
 	game_price = page_soup.findAll("span", {"class":"price-sales standard-price"})
-
+	
 	for p in game_price:
 		game_price = p.text
 		game_price = game_price.strip()
 		table.append(game_price)
 
-	game_price = table[0]
-	actual_prices.append(game_price)
+	game_price = game_price.split()
+	game_currency = game_price[0]
+	game_value = game_price[1]
+
+	x = game_value, game_currency
+
+	string = ""
+	for j in x:
+		string += j
+
+	x = string
+	print(x)
+
+	actual_prices.append(x)
 
 def saveLinkToFile(game_link):
 	link_file = open("links.txt" , "a") #otwieramy plik data.txt z uprawnieniami read + write
@@ -208,35 +244,17 @@ def checkPrices():
 			if(x[-6] == ","):
 				file_prices.append(x)
 
-	# test = []
-	# print(links)
-	# for n in links:
-	# 	print(n)
-	# 	n = n.replace("/", " ")
-	# 	n = n.replace(".", " ")
-	# 	n =  n.split(" ")
-	# 	n = n[3]
-	# 	test.append(n)
-	# print(test)
+
 
 	for x in links:
 		if(x[8:26] == "store.steampowered"):
 			steamCheck(x)
-		elif(x[9:18] == "store.ubi"):
+		elif(x[8:17] == "store.ubi"):
 			uplayCheck(x)
 
 	print(actual_prices)
+	print(file_prices)
 
-
-		# if(m == "ubi"):
-		# 	uplayLink.append(links[i])
-		# 	break
-
-
-	#prices = prices[2::3] #wypisuje co 3 stringi z listy(ceny)
-	# for i in range(len(file_prices)):
-	# 	print(i)
-	# 	steamCheck(links[i])
 
 	for x in actual_prices:
 		x = x[:-2]
@@ -248,18 +266,19 @@ def checkPrices():
 		x = x.replace(",", ".")
 		testb.append(x)
 
-	# for i in range(len(file_prices)):
-	# 	if(float(testa[i]) < float(testb[i])):
-	# 		print("Price increased")
-	# 	elif(float(testa[i]) == float(testb[i])):
-	# 		print("Price is same")
-	#
-	# 	else:
-	# 		print("Price decreased")
+	for i in range(len(file_prices)):
+		if(float(testa[i]) < float(testb[i])):
+			print("Price increased")
+		elif(float(testa[i]) == float(testb[i])):
+			print("Price is same")
+	
+		else:
+			print("Price decreased")
 
 checkPrices()
 
 getTitles()
+
 
 
 window.geometry("400x400")
