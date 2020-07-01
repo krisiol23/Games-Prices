@@ -270,14 +270,18 @@ def checkPrices():
 		x = x.replace(",", ".")
 		testb.append(x)
 
+		up = "Price increased ↑"
+		down = "Price decreased ↓"
+		same = "Price is same ↔"
+
 	for i in range(len(file_prices)):
 		if(float(testa[i]) < float(testb[i])):
-			print("Price increased")
+			print(up)
 		elif(float(testa[i]) == float(testb[i])):
-			print("Price is same")
+			print(same)
 	
 		else:
-			print("Price decreased")
+			print(down)
 
 checkPrices()
 
