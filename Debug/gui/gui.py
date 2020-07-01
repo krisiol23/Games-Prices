@@ -134,6 +134,9 @@ def uplayScrap(game_url, value):
 		game_price = game_price.strip()
 		table.append(game_price)
 
+	table = table[12:]
+	table = table[0]
+	game_price = table
 	game_price = game_price.split()
 	game_currency = game_price[0]
 	game_value = game_price[1]
@@ -165,7 +168,6 @@ def steamCheck(url):
 	
 	if not game_price:
 		game_price1 = page_soup.findAll("div", {"class":"discount_final_price"})
-		print(game_price1)
 		for p in game_price1:
 			game_price1 = p.text
 			game_price1 = game_price1.strip()
@@ -199,6 +201,9 @@ def uplayCheck(url):
 		game_price = game_price.strip()
 		table.append(game_price)
 
+	table = table[12:]
+	table = table[0]
+	game_price = table	
 	game_price = game_price.split()
 	game_currency = game_price[0]
 	game_value = game_price[1]
@@ -210,7 +215,6 @@ def uplayCheck(url):
 		string += j
 
 	x = string
-	print(x)
 
 	actual_prices.append(x)
 
