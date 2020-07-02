@@ -1,11 +1,6 @@
- https://store.steampowered.com/app/1172620/Sea_of_Thieves/
- https://store.ubi.com/eu/anno-1602-history-edition/5ebc1bc50d253c2420445272.html
- https://store.ubi.com/eu/watch_dogs--2/574d3a8aca1a64fb3b8b4567.html?edition=Standard%20Edition
- https://store.steampowered.com/app/284160/BeamNGdrive/
- https://store.ubi.com/eu/watch_dogs--2/574d3a8aca1a64fb3b8b4567.html
  https://store.ubi.com/eu/game?pid=574d3a8aca1a64fb3b8b4567&dwvar_574d3a8aca1a64fb3b8b4567_Platform=pcdl&edition=Standard%20Edition&source=detail
  https://store.ubi.com/eu/game?pid=574d3a8aca1a64fb3b8b4567&dwvar_574d3a8aca1a64fb3b8b4567_Platform=pcdl&edition=Standard%20Edition&source=detail
- https://store.ubi.com/eu/game?pid=5ebc19a30d253c242044526e&dwvar_5ebc19a30d253c242044526e_Platform=pcdl&edition=History%20Edition&source=detail
- https://store.ubi.com/eu/game?pid=5e15ad495cdf9a1ec45ad835&dwvar_5e15ad495cdf9a1ec45ad835_Platform=pcdl&edition=Warlords%20of%20New%20York%20Edition&source=detail
- https://store.ubi.com/eu/tom-clancy-s-rainbow-six-siege-year-5-pass/5e15a1825cdf9a1ec45ad828.html
- https://store.steampowered.com/app/1172620/Sea_of_Thieves/
+ https://store.steampowered.com/app/220200/Kerbal_Space_Program/
+ https://store.ubi.com/eu/assassin-s-creed-valhalla-ultimate-edition/5e84a5065cdf9a21c0b4e737.html
+ https://store.steampowered.com/app/214490/Alien_Isolation/
+ https://store.ubi.com/eu/game?pid=5cc81f5f6b54a4cd3c0e9cfd&dwvar_5cc81f5f6b54a4cd3c0e9cfd_Platform=pcdl&edition=Standard%20Edition&source=detail

@@ -275,13 +275,25 @@ def checkPrices():
 		same = "Price is same ↔"
 
 	for i in range(len(file_prices)):
+		j = 4
 		if(float(testa[i]) < float(testb[i])):
-			print(up)
-		elif(float(testa[i]) == float(testb[i])):
-			print(same)
-	
+			up = Label(window, text = "↑")
+			up.grid(row = j, column = 3)
+			print("up")
+
+		if(float(testa[i]) == float(testb[i])):
+			same = Label(window, text = "↔")
+			same.grid(row = j, column = 3)
+			j+1 
+			print("same")
+
+		elif(float(testa[i]) > float(testb[i])):
+			print("down")
+			down = Label(window, text = "↓")
+			down.grid(row = j, column = 3)
+			
 		else:
-			print(down)
+			j = j + 1
 
 checkPrices()
 
