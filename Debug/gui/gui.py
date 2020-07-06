@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import tkinter
 from tkinter import *
 from tkinter import ttk
 import os
@@ -8,7 +7,7 @@ from bs4 import BeautifulSoup as soup #biblioteka do pobierania danych ze strony
 from urllib.request import urlopen as uReq #biblitoeka do nawiązywania połączenia ze stronką
 import time
 
-window = tkinter.Tk()
+window = Tk()
 window.title("Games_prices")
 
 actual_prices = []
@@ -99,28 +98,35 @@ def steamScrap(game_url, value):
 	page_soup = soup(page_html, "html.parser") #parsujemy kod html do zmiennej page_soup
 
 	game_name = page_soup.findAll("div", {"class":"apphub_AppName"}) #zapisujemy do zmiennej game_name linijke html który zawiera div z klasą "apphub_AppName"
-	game_price = page_soup.findAll("div", {"class":"game_purchase_price price"}) #to samo działanie co powyżej
+	# game_price = page_soup.findAll("div", {"class":"game_purchase_price price"}) #to samo działanie co powyżej
 	
 	for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
 		game_name = p.text
 
-	if not game_price:
+	x = page_soup.findAll("div", {"class":"discount_pct"})
+	# print(x)
+	if not x:
+		game_price1 = page_soup.findAll("div", {"class":"game_purchase_price price"})
+		for p in game_price1:
+			game_price1 = p.text
+			game_price1 = game_price1.strip()
+			table.append(game_price1)
+		
+		game_price1 = table[0]
+		#print(game_price)
+		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
+		saveToFile(ready)
+		getTitles()
+
+	elif(x == x):
 		game_price1 = page_soup.findAll("div", {"class":"discount_final_price"})
 		for p in game_price1:
 			game_price1 = p.text
 			game_price1 = game_price1.strip()
 			table.append(game_price1)
-
-		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
-		saveToFile(ready)
-		getTitles()
-	
-	else:
-		for p in game_price:#to samo co poœyższa petla
-			game_price = p.text
-			game_price = game_price.strip() #jeżeli nawali nam niepotrzebnych spacji w stringu w którym mamy nasz tekst to używamy na nim maetody stripe() aby się ich pozbyć
-			table.append(game_price)
-
+		
+		game_price1 = table[0]
+		print(game_price)
 
 		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 		saveToFile(ready)
@@ -177,28 +183,32 @@ def steamCheck(url):
 	uClient.close()
 
 	page_soup = soup(page_html, "html.parser")
-	game_price = page_soup.findAll("div", {"class":"game_purchase_price price"})
+	# game_price = page_soup.findAll("div", {"class":"game_purchase_price price"})
 	
-	if not game_price:
+	x = page_soup.findAll("div", {"class":"discount_pct"})
+	# print(x)
+	if not x:
+		game_price1 = page_soup.findAll("div", {"class":"game_purchase_price price"})
+		for p in game_price1:
+			game_price1 = p.text
+			game_price1 = game_price1.strip()
+			table.append(game_price1)
+		
+		game_price1 = table[0]
+		#print(game_price)
+		actual_prices.append(game_price1)	
+
+	elif(x == x):
+		print("s")
 		game_price1 = page_soup.findAll("div", {"class":"discount_final_price"})
 		for p in game_price1:
 			game_price1 = p.text
 			game_price1 = game_price1.strip()
-			table1.append(game_price1)
+			table.append(game_price1)
 		
-		game_price1 = table1[0]
+		game_price1 = table[0]
 		#print(game_price)
-		actual_prices.append(game_price1)
-
-	else:
-		for p in game_price:
-			game_price = p.text
-			game_price = game_price.strip()
-			table.append(game_price)
-	
-		game_price = table[0]
-		#print(game_price)
-		actual_prices.append(game_price)	
+		actual_prices.append(game_price1)	
 
 def uplayCheck(url):
 	table = []
@@ -269,8 +279,8 @@ def checkPrices():
 		elif(x[8:17] == "store.ubi"):
 			uplayCheck(x)
 
-	print(actual_prices)
-	print(file_prices)
+	# print(actual_prices)
+	# print(file_prices)
 
 
 	for x in actual_prices:
