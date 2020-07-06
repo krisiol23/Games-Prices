@@ -126,7 +126,7 @@ def steamScrap(game_url, value):
 			table.append(game_price1)
 		
 		game_price1 = table[0]
-		print(game_price)
+		#print(game_price)
 
 		ready = game_name + " " + value + " " + table[0] #robimy stringa z wynikami naszego wyszukiwania
 		saveToFile(ready)
@@ -278,9 +278,6 @@ def checkPrices():
 			steamCheck(x)
 		elif(x[8:17] == "store.ubi"):
 			uplayCheck(x)
-
-	# print(actual_prices)
-	# print(file_prices)
 
 
 	for x in actual_prices:
