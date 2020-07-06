@@ -1,6 +1,4 @@
- https://store.ubi.com/eu/game?pid=574d3a8aca1a64fb3b8b4567&dwvar_574d3a8aca1a64fb3b8b4567_Platform=pcdl&edition=Standard%20Edition&source=detail
- https://store.ubi.com/eu/game?pid=574d3a8aca1a64fb3b8b4567&dwvar_574d3a8aca1a64fb3b8b4567_Platform=pcdl&edition=Standard%20Edition&source=detail
- https://store.steampowered.com/app/220200/Kerbal_Space_Program/
- https://store.ubi.com/eu/assassin-s-creed-valhalla-ultimate-edition/5e84a5065cdf9a21c0b4e737.html
- https://store.steampowered.com/app/214490/Alien_Isolation/
- https://store.ubi.com/eu/game?pid=5cc81f5f6b54a4cd3c0e9cfd&dwvar_5cc81f5f6b54a4cd3c0e9cfd_Platform=pcdl&edition=Standard%20Edition&source=detail
+ https://store.steampowered.com/app/690790/DiRT_Rally_20/
+ https://store.steampowered.com/app/105600/Terraria/
+ https://store.ubi.com/eu/the-division-2-warlords-of-new-york-expansion/5e29b1d85cdf9a03ec037ae0.html
+ https://store.steampowered.com/app/284160/BeamNGdrive/

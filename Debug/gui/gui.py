@@ -73,9 +73,21 @@ def saveToFile(toSave):
 	txt_file.close() #zapisujemy plik
 
 def getTitles():
+	test = []
+	j = 4
 	with open("data.txt") as f:
-		label1 = Label(window, text = f.read())
-		label1.grid(row = 4, column = 2)
+		cos = f.readlines()
+
+		for x in cos:
+			x = x[:-1]
+			test.append(x)
+
+		for line in test:
+			label = Label(window, text = line)
+			label.grid(row = j, column = 2)
+
+			j+=1
+			
 
 def steamScrap(game_url, value):
 	table = []
@@ -88,7 +100,7 @@ def steamScrap(game_url, value):
 
 	game_name = page_soup.findAll("div", {"class":"apphub_AppName"}) #zapisujemy do zmiennej game_name linijke html który zawiera div z klasą "apphub_AppName"
 	game_price = page_soup.findAll("div", {"class":"game_purchase_price price"}) #to samo działanie co powyżej
-
+	
 	for p in game_name: #ta pętla służy do wyciągnięcia z tej linijki html kawałka tekstu który nas interesuje
 		game_name = p.text
 
@@ -149,8 +161,8 @@ def uplayScrap(game_url, value):
 
 	x = string
 	#print(x)
-	print(game_name)
-	print(game_value,game_currency)
+	# print(game_name)
+	# print(game_value,game_currency)
 
 	ready = game_name + " " + value + " " + x
 
@@ -159,6 +171,7 @@ def uplayScrap(game_url, value):
 
 def steamCheck(url):
 	table = []
+	table1 = []
 	uClient = uReq(url)
 	page_html = uClient.read()
 	uClient.close()
@@ -171,9 +184,9 @@ def steamCheck(url):
 		for p in game_price1:
 			game_price1 = p.text
 			game_price1 = game_price1.strip()
-			table.append(game_price1)
-		#print(table)
-		game_price1 = table[0]
+			table1.append(game_price1)
+		
+		game_price1 = table1[0]
 		#print(game_price)
 		actual_prices.append(game_price1)
 
@@ -182,7 +195,7 @@ def steamCheck(url):
 			game_price = p.text
 			game_price = game_price.strip()
 			table.append(game_price)
-		#print(table)
+	
 		game_price = table[0]
 		#print(game_price)
 		actual_prices.append(game_price)	
@@ -280,20 +293,19 @@ def checkPrices():
 			up = Label(window, text = "↑")
 			up.grid(row = j, column = 3)
 			print("up")
-
+			j += 1
 		if(float(testa[i]) == float(testb[i])):
 			same = Label(window, text = "↔")
 			same.grid(row = j, column = 3)
-			j+1 
+			j+=1 
 			print("same")
 
 		elif(float(testa[i]) > float(testb[i])):
 			print("down")
 			down = Label(window, text = "↓")
 			down.grid(row = j, column = 3)
-			
-		else:
-			j = j + 1
+			j+=1
+		
 
 checkPrices()
 
@@ -301,5 +313,5 @@ getTitles()
 
 
 
-window.geometry("400x400")
+window.geometry("500x400")
 window.mainloop()
