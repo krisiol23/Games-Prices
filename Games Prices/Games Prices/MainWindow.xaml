@@ -1,0 +1,46 @@
+﻿<Window x:Class="Games_Prices.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Games_Prices"
+        mc:Ignorable="d"
+        Title="Games Prices" Height="450" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" WindowStyle="None">
+    <Grid Background="#D2D9D6">
+        <StackPanel>
+            <StackPanel Height="25" Background="#402A1E" MouseDown="StackPanel_MouseDown">
+
+                <StackPanel Width="400" Height="25" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+
+                    <TextBlock Text="Games Prices" Foreground="#73482F" FontSize="15" Margin="5 0 0 0"/>
+
+                    <Button x:Name="minimizeBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#73482F" Padding="0" Width="25" Margin="260 0 0 0" Click="minimizeBtn_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                    
+                    <Button x:Name="exitBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#73482F" Padding="0" Width="25" Click="exitBtn_Click">
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </Button>
+                    
+                </StackPanel>
+                
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="25">
+
+                <Button x:Name="addGameBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#73482F" Padding="0" Width="25" Click="addGameBtn_Click" Margin="5 0 0 0">
+                    <materialDesign:PackIcon Kind="Add"/>
+                </Button>
+
+                <Button x:Name="delGameBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#73482F" Padding="0" Width="25" Click="delGameBtn_Click">
+                    <materialDesign:PackIcon Kind="Delete"/>
+                </Button>
+
+            </StackPanel>
+
+            <Separator Width="380" Foreground="#73482F"/>
+            <ListBox x:Name="gamesBox" Height="380" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        </StackPanel>
+    </Grid>
+</Window>
