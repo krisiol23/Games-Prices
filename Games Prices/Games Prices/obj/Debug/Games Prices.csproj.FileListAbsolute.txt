@@ -19,3 +19,26 @@ C:\Users\ch\source\repos\Games Prices\Games Prices\bin\Debug\MaterialDesignColor
 C:\Users\ch\source\repos\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\ch\source\repos\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\ch\source\repos\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.CopyComplete
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\Games Prices.exe.config
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\Games Prices.exe
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\Games Prices.pdb
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignColors.dll
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignColors.pdb
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csprojAssemblyReference.cache
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\MainWindow.g.cs
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\App.g.cs
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices_MarkupCompile.cache
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices_MarkupCompile.lref
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\MainWindow.baml
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.g.resources
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games_Prices.Properties.Resources.resources
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.GenerateResource.cache
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.CoreCompileInputs.cache
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.CopyComplete
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.exe
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.pdb
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\NewGameWindow.g.cs
+C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\NewGameWindow.baml

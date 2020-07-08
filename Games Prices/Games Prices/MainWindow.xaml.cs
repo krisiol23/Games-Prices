@@ -47,7 +47,7 @@ namespace Games_Prices
         {
             GamesList.Clear();
 
-            using (StreamReader sr = new StreamReader("data.txt"))
+            using (StreamReader sr = new StreamReader("games.txt"))
             {
                 string line;
 
@@ -63,10 +63,11 @@ namespace Games_Prices
                     }
                 }
             }
+        }
 
-            //Buttons 
+        //Buttons 
 
-            private void exitBtn_Click(object sender, RoutedEventArgs e)
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
             {
                 this.Close();
             }
@@ -78,13 +79,14 @@ namespace Games_Prices
 
             private void addGameBtn_Click(object sender, RoutedEventArgs e)
             {
-                MessageBox.Show("dasdsa");
+                NewGameWindow ngw = new NewGameWindow();
+                ngw.Show();
             }
 
             private void delGameBtn_Click(object sender, RoutedEventArgs e)
             {
 
             }
-        }
+        
     }
 }

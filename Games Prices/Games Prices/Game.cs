@@ -8,10 +8,10 @@ namespace Games_Prices
 {
     public class Game
     {
-        private string title { get; set; }
-        private string platform { get; set; }
-        private string price { get; set; }
-        private string actualPrice { get; set; }
+        public string title { get; set; }
+        public string platform { get; set; }
+        public string price { get; set; }
+        public string actualPrice { get; set; }
 
         public Game(string t, string p, string pr, string ap)
             {
