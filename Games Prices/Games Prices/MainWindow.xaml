@@ -40,7 +40,15 @@
             </StackPanel>
 
             <Separator Width="380" Foreground="#73482F"/>
-            <ListBox x:Name="gamesBox" Height="380" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <ListBox x:Name="gamesBox" Height="380" Foreground="#402A1E" Background="{x:Null}" BorderBrush="{x:Null}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
     </Grid>
 </Window>

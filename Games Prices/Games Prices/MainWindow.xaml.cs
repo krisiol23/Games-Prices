@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Diagnostics;
+using System.Windows.Documents.Serialization;
+using System.Windows.Media.Animation;
 
 namespace Games_Prices
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private List<Game> GamesList;
@@ -28,6 +28,10 @@ namespace Games_Prices
             InitializeComponent();
 
             GamesList = new List<Game>();
+            readData();
+
+            gamesBox.ItemsSource = null;
+            gamesBox.ItemsSource = GamesList;
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -43,11 +47,12 @@ namespace Games_Prices
         }
 
         //Reading Data
-        private void ReadData()
+
+        private void readData()
         {
             GamesList.Clear();
 
-            using (StreamReader sr = new StreamReader("games.txt"))
+            using (StreamReader sr = new StreamReader("data.txt"))
             {
                 string line;
 
@@ -55,7 +60,12 @@ namespace Games_Prices
                 {
                     string[] par = line.Split('|');
 
-                    Game game = new Game(par[0], par[1], par[2], par[3]);
+                    string actualPrice = execCheckProcess(par[2], par[1]);
+                    actualPrice = formatPrice(actualPrice);
+                    string price = formatPrice(par[3]);
+                    char compareChar = comparePrices(double.Parse(price), double.Parse(actualPrice));
+
+                    Game game = new Game(par[0], par[1], par[2], par[3], actualPrice, compareChar);
 
                     if (!GamesList.Contains(game))
                     {
@@ -63,6 +73,74 @@ namespace Games_Prices
                     }
                 }
             }
+        }
+
+        private void deleteGame(Game game)
+        {
+            GamesList.Remove(game);
+
+            using (FileStream fs = new FileStream("data.txt", FileMode.Truncate))
+            { }
+
+            using (StreamWriter sw = new StreamWriter("data.txt", true))
+            {
+                foreach (Game g in GamesList)
+                {
+                    sw.WriteLine("{0}|{1}|{2}|{3}", g.title, g.platform, g.url, g.price);
+                }
+            }
+        }
+
+        char comparePrices(double price, double actualPrice)
+        {
+            char arrow;
+            if(actualPrice == price)
+            {
+                arrow = '-';
+            }
+            else if(actualPrice < price)
+            {
+                arrow = '↓';
+            }
+            else
+            {
+                arrow = '↑';
+            }
+            return arrow;
+        }
+        string formatPrice(string price)
+        {
+            price = price.Replace("zl", String.Empty);
+            price = price.Replace("zł", String.Empty);
+            price = price.Replace(" ", String.Empty);
+            return price;
+        }
+
+        //Python Connection
+
+        static string execCheckProcess(string gameUrl, string gamePlatform)
+        {
+            var psi = new ProcessStartInfo();
+            psi.FileName = @"D:\Program Files (x86)\python.exe";
+
+            var script = @"check.py";
+            var url = gameUrl;
+            var value = gamePlatform;
+
+            psi.Arguments = $"\"{script}\" \"{url}\" \"{value}\"";
+
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            psi.RedirectStandardOutput = true;
+            psi.RedirectStandardError = true;
+
+            var results = "";
+
+            using (var process = Process.Start(psi))
+            {
+                results = process.StandardOutput.ReadToEnd();
+            }
+            return results;
         }
 
         //Buttons 
@@ -85,8 +163,10 @@ namespace Games_Prices
 
             private void delGameBtn_Click(object sender, RoutedEventArgs e)
             {
-
-            }
+                deleteGame(gamesBox.SelectedItem as Game);
+                gamesBox.ItemsSource = null;
+                gamesBox.ItemsSource = GamesList;
+        }
         
     }
 }

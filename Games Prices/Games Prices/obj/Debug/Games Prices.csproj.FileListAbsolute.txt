@@ -42,3 +42,26 @@ C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.exe
 C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.pdb
 C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\NewGameWindow.g.cs
 C:\Users\ch\Desktop\projMKP\Games Prices\Games Prices\obj\Debug\NewGameWindow.baml
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\Games Prices.exe.config
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\Games Prices.exe
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\Games Prices.pdb
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignColors.dll
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.dll
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignColors.pdb
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.pdb
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\bin\Debug\MaterialDesignThemes.Wpf.xml
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csprojAssemblyReference.cache
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\MainWindow.g.cs
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\NewGameWindow.g.cs
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\App.g.cs
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices_MarkupCompile.cache
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices_MarkupCompile.lref
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\MainWindow.baml
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\NewGameWindow.baml
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.g.resources
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games_Prices.Properties.Resources.resources
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.GenerateResource.cache
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.CoreCompileInputs.cache
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.csproj.CopyComplete
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.exe
+d:\Users\maciek\Desktop\git_projects\projMKP\Games Prices\Games Prices\obj\Debug\Games Prices.pdb

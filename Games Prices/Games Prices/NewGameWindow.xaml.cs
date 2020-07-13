@@ -12,12 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Diagnostics;
 
 namespace Games_Prices
 {
-    /// <summary>
-    /// Logika interakcji dla klasy NewGameWindow.xaml
-    /// </summary>
     public partial class NewGameWindow : Window
     {
         public NewGameWindow()
@@ -37,23 +35,39 @@ namespace Games_Prices
             }
         }
 
-        //Saving Data
+        //Python Connection
 
-        bool SaveToTxt()
+        static string execProcess(string link, string platform)
         {
-            using (StreamWriter sw = new StreamWriter("games.txt", true))
+            var psi = new ProcessStartInfo();
+            psi.FileName = @"D:\Program Files (x86)\python.exe";
+
+            var script = @"script.py";
+            var url = link;
+            var value = platform;
+
+            psi.Arguments = $"\"{script}\" \"{url}\" \"{value}\"";
+
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            psi.RedirectStandardOutput = true;
+            psi.RedirectStandardError = true;
+
+            var results = "";
+
+            using (var process = Process.Start(psi))
             {
-                sw.WriteLine("{0}|{1}", linkTxt.Text, platformCmb.Text);
-                sw.Close();
+                results = process.StandardOutput.ReadToEnd();
             }
-            return true;
+
+            return results;
         }
 
         //Buttons
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            SaveToTxt();
+            execProcess(linkTxt.Text, platformCmb.Text);
             this.Close();
         }
 
