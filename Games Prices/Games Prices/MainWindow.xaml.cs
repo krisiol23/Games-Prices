@@ -157,8 +157,8 @@ namespace Games_Prices
 
             private void addGameBtn_Click(object sender, RoutedEventArgs e)
             {
-                NewGameWindow ngw = new NewGameWindow();
-                ngw.Show();
+                NewGameWindow newg = new NewGameWindow();
+                newg.showForm();
             }
 
             private void delGameBtn_Click(object sender, RoutedEventArgs e)
@@ -167,6 +167,18 @@ namespace Games_Prices
                 gamesBox.ItemsSource = null;
                 gamesBox.ItemsSource = GamesList;
         }
-        
+
+        private void helpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Symbols: '-' if price is the same. '↓' if price is lower. '↑' if price is higher than last one.");
+        }
+
+        private void refreshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            readData();
+
+            gamesBox.ItemsSource = null;
+            gamesBox.ItemsSource = GamesList;
+        }
     }
 }

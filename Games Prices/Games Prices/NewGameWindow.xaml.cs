@@ -62,6 +62,10 @@ namespace Games_Prices
 
             return results;
         }
+        public void showForm()
+        {
+            this.Show();
+        }
 
         //Buttons
 

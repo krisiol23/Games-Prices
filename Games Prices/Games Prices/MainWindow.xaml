@@ -37,6 +37,14 @@
                     <materialDesign:PackIcon Kind="Delete"/>
                 </Button>
 
+                <Button x:Name="refreshBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#73482F" Padding="0" Width="25" Click="refreshBtn_Click">
+                    <materialDesign:PackIcon Kind="Refresh"/>
+                </Button>
+
+                <Button x:Name="helpBtn" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#73482F" Padding="0" Width="25" Margin="290 0 0 0" Click="helpBtn_Click">
+                    <materialDesign:PackIcon Kind="Help"/>
+                </Button>
+                
             </StackPanel>
 
             <Separator Width="380" Foreground="#73482F"/>
@@ -44,7 +52,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Foreground="#402A1E"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
